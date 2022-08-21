@@ -5,19 +5,32 @@ import { Wallet } from './wallet.schema';
 
 export type CustomerDocument = Customer & Document;
 
-@Schema()
+@Schema({
+    timestamps: {
+        createdAt: true,
+        updatedAt: true,
+    }
+})
 export class Customer {
 
-    @Prop()
+    @Prop({
+        checkRequired: true,
+    })
     fullName: string;
 
-    @Prop()
+    @Prop({
+        checkRequired: true,
+    })
     email: string;
 
-    @Prop()
+    @Prop({
+        checkRequired: true,
+    })
     password: string;
 
-    @Prop()
+    @Prop({
+        checkRequired: true,
+    })
     dni: string;
 
     @Prop()

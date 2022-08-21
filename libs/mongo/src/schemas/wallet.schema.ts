@@ -3,13 +3,22 @@ import { Document } from 'mongoose';
 
 export type WalletDocument = Wallet & Document;
 
-@Schema()
+@Schema({
+    timestamps: {
+        createdAt: true,
+        updatedAt: true,
+    }
+})
 export class Wallet {
 
-    @Prop()
+    @Prop({
+        checkRequired: true,
+    })
     currency: string;
 
-    @Prop()
+    @Prop({
+        default: 0
+    })
     balance: number;
 
 }
