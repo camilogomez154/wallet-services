@@ -17,5 +17,5 @@ export class WalletController {
   remove(@Param('id') id: string) {
     return this.walletService.remove(+id);
   }
-
+  
 }
