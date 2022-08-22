@@ -19,19 +19,15 @@ export class WalletService {
     return await WalletSaved.save()
   }
 
-  async findAll() {
-    return await this.walletModel.find().exec()
-  }
-
-  async findOne(_id: number) {
+  async findOne(_id: string) {
     return await this.walletModel.findById({ _id }).exec()
   }
 
-  async update(_id: number, updateWalletDto: UpdateWalletDto) {
+  async update(_id: string, updateWalletDto: UpdateWalletDto) {
     return await this.walletModel.updateOne({ _id }, updateWalletDto, { upsert: true }).exec()
   }
 
-  async remove(_id: number) {
-    return await this.walletModel.remove({ _id }).exec()
+  async remove(_id: string) {
+    return await this.walletModel.deleteOne({ _id }).exec()
   }
 }

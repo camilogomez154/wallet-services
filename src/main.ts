@@ -6,6 +6,7 @@ import { AppModule } from './app.module';
 
 function swaggerSetup(app: INestApplication) {
   const config = new DocumentBuilder()
+    .addBearerAuth()
     .setTitle('Wallet Service API REST')
     .setDescription('This module is uses to define all endpoints and examples of this project.')
     .setVersion('1.0')

@@ -6,6 +6,7 @@ import { MongoModule } from '../../libs/mongo/src/mongo.module';
 @Module({
   controllers: [WalletController],
   providers: [WalletService],
+  exports: [WalletService],
   imports: [MongoModule],
 })
 export class WalletModule { }
