@@ -1,26 +1,37 @@
+import { InjectModel } from '@nestjs/mongoose';
 import { Injectable } from '@nestjs/common';
+import { Model } from 'mongoose';
+
+import { Wallet, WalletDocument } from '@app/mongo';
+
 import { CreateWalletDto } from './dto/create-wallet.dto';
 import { UpdateWalletDto } from './dto/update-wallet.dto';
 
 @Injectable()
 export class WalletService {
-  create(createWalletDto: CreateWalletDto) {
-    return 'This action adds a new wallet';
+  constructor(
+    @InjectModel(Wallet.name)
+    private readonly walletModel: Model<WalletDocument>
+  ) { }
+
+  async create(createWalletDto: CreateWalletDto) {
+    const WalletSaved = new this.walletModel(createWalletDto)
+    return await WalletSaved.save()
   }
 
-  findAll() {
-    return `This action returns all wallet`;
+  async findAll() {
+    return await this.walletModel.find().exec()
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} wallet`;
+  async findOne(_id: number) {
+    return await this.walletModel.findById({ _id }).exec()
   }
 
-  update(id: number, updateWalletDto: UpdateWalletDto) {
-    return `This action updates a #${id} wallet`;
+  async update(_id: number, updateWalletDto: UpdateWalletDto) {
+    return await this.walletModel.updateOne({ _id }, updateWalletDto, { upsert: true }).exec()
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} wallet`;
+  async remove(_id: number) {
+    return await this.walletModel.remove({ _id }).exec()
   }
 }
