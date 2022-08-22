@@ -34,5 +34,5 @@ export class WalletController {
   async remove(@Param('id') id: string) {
     return this.walletService.remove(id);
   }
-
+  
 }
