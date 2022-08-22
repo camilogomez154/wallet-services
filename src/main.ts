@@ -18,7 +18,8 @@ function swaggerSetup(app: INestApplication) {
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   swaggerSetup(app);
-
+  
   await app.listen(3000);
 }
+
 bootstrap();
