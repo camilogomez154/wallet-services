@@ -37,7 +37,7 @@ export class Customer {
     address: string;
 
     @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Wallet' }] })
-    wallets: Wallet[];
+    wallets: Wallet[] | string[];
 
 }
 

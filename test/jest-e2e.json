@@ -12,6 +12,8 @@
   },
   "moduleNameMapper": {
     "@app/mongo/(.*)": "<rootDir>/../libs/mongo/src/$1",
-    "@app/mongo": "<rootDir>/../libs/mongo/src"
+    "@app/mongo": "<rootDir>/../libs/mongo/src",
+    "@app/security/(.*)": "<rootDir>/../libs/security/src/$1",
+    "@app/security": "<rootDir>/../libs/security/src"
   }
 }
